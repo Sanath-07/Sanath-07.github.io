@@ -72,7 +72,24 @@
             color: #667eea;
         }
 
-        /* Hero Section */
+        /* Profile Picture */
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 2rem auto;
+            display: block;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
+        }
         .hero {
             height: 100vh;
             display: flex;
@@ -513,8 +530,9 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
+            <img src="profile.jpg" alt="Sanath Nagendra Bhargav" class="profile-picture">
             <h1>Sanath Nagendra Bhargav</h1>
-            <div class="subtitle">AI/ML Engineer & Software Developer</div>
+            <div class="subtitle">AI/ML Engineer and Software Developer</div>
             <div class="description">
                 USC MS CS Student | Ex-Cisco Software Engineer | Specializing in Generative AI, Computer Vision, and Large-Scale Systems
             </div>
