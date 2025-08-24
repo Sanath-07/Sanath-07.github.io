@@ -366,8 +366,43 @@
 
         /* Contact Section */
         .contact {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .contact .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact .section-title {
+            color: #ffffff !important;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .contact .section-title::after {
+            background: #ffffff;
+        }
+
+        .contact-content {
+            color: #ffffff;
+        }
+
+        .contact-content p {
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
         }
 
         .contact-content {
@@ -385,13 +420,26 @@
         }
 
         .contact-link {
-            color: white;
+            color: #ffffff;
             font-size: 1.5rem;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .contact-link:hover {
             transform: scale(1.2);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
         }
 
         /* Animations */
@@ -503,6 +551,17 @@
                 </div>
 
                 <div class="experience-card fade-in">
+                    <div class="company">Cisco</div>
+                    <div class="role">Software Engineering Intern</div>
+                    <div class="duration">January 2024 – June 2024</div>
+                    <ul class="achievements">
+                        <li>Developed API endpoint for PX Cloud architecture, enhancing response speed by 30%</li>
+                        <li>Architected data flow solutions for multi-layered database with 200+ views, reducing integration complexity by 40%</li>
+                        <li>Created open-source Java SDK for PX Cloud API: px-cloud-java-sdk</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card fade-in">
                     <div class="company">Mercedes-Benz Research and Development</div>
                     <div class="role">Perception Engineering Intern</div>
                     <div class="duration">October 2023 – January 2024</div>
@@ -537,10 +596,7 @@
                             <span class="tech-tag">PyTorch</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="#" class="project-link">
+                            <a href="https://link.springer.com/chapter/10.1007/978-981-99-8031-4_45" class="project-link" target="_blank">
                                 <i class="fas fa-external-link-alt"></i> Publication
                             </a>
                         </div>
@@ -563,11 +619,8 @@
                             <span class="tech-tag">OpenCV</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">
+                            <a href="https://github.com/Sanath-07/ViTSeg/tree/main" class="project-link" target="_blank">
                                 <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fas fa-play"></i> Demo
                             </a>
                         </div>
                     </div>
@@ -589,10 +642,7 @@
                             <span class="tech-tag">Deep Learning</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="#" class="project-link">
+                            <a href="https://link.springer.com/chapter/10.1007/978-981-97-3588-4_33" class="project-link" target="_blank">
                                 <i class="fas fa-external-link-alt"></i> Publication
                             </a>
                         </div>
@@ -615,11 +665,54 @@
                             <span class="tech-tag">Microservices</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">
+                            <a href="https://github.com/Projects-RR-2022/BD1_110_346_370_372" class="project-link" target="_blank">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
-                            <a href="#" class="project-link">
-                                <i class="fas fa-book"></i> Documentation
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">PX Cloud Java SDK</h3>
+                        <p class="project-description">
+                            Created open-source Java SDK for Cisco PX Cloud API, enabling developers to integrate with Cisco's cloud architecture seamlessly.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">SDK Development</span>
+                            <span class="tech-tag">REST APIs</span>
+                            <span class="tech-tag">Open Source</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://developer.cisco.com/codeexchange/github/repo/CiscoDevNet/px-cloud-java-sdk/" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> Cisco DevNet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">StatHive - Cricket Analytics</h3>
+                        <p class="project-description">
+                            Created comprehensive cricket analytics dataset through multi-step data pipeline combining web scraping and BERT-based keyword extraction. Published in GradivaReview.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Web Scraping</span>
+                            <span class="tech-tag">BERT</span>
+                            <span class="tech-tag">Data Pipeline</span>
+                            <span class="tech-tag">Analytics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://gradivareview.com/volume-9-issue-7-2023/" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Publication
                             </a>
                         </div>
                     </div>
@@ -696,7 +789,7 @@
     <section id="contact" class="contact section">
         <div class="container">
             <div class="contact-content fade-in">
-                <h2 class="section-title" style="color: white;">Let's Connect</h2>
+                <h2 class="section-title">Let's Connect</h2>
                 <p style="font-size: 1.2rem; margin-bottom: 2rem;">
                     Interested in collaborating on AI/ML projects or discussing opportunities? I'd love to hear from you!
                 </p>
@@ -704,10 +797,10 @@
                     <a href="mailto:sanathna@usc.edu" class="contact-link" title="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <a href="https://linkedin.com/in/your-profile" class="contact-link" title="LinkedIn" target="_blank">
+                    <a href="https://www.linkedin.com/in/sanath-n-bhargav-3504a0217/" class="contact-link" title="LinkedIn" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://github.com/your-profile" class="contact-link" title="GitHub" target="_blank">
+                    <a href="https://github.com/Sanath-07" class="contact-link" title="GitHub" target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
                     <a href="tel:+12135472890" class="contact-link" title="Phone">
