@@ -12,12 +12,20 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            color: var(--text-dark);
+            background: white;
         }
 
         .container {
@@ -36,6 +44,7 @@
             z-index: 1000;
             padding: 1rem 0;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         nav.scrolled {
@@ -52,7 +61,10 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #667eea;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -63,67 +75,106 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--text-dark);
             font-weight: 500;
             transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
-            color: #667eea;
+            color: var(--primary-color);
         }
 
-        /* Profile Picture */
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
         .profile-picture {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             border: 5px solid rgba(255, 255, 255, 0.3);
             margin: 0 auto 2rem auto;
             display: block;
             object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             animation: fadeInUp 1s ease 0.3s both;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .profile-picture:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
-        }
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            z-index: 2;
-            max-width: 800px;
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 25px 70px rgba(255, 255, 255, 0.2);
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+            font-weight: 300;
         }
 
         .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero .description {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.8;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.85;
             animation: fadeInUp 1s ease 0.4s both;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
         }
 
         .cta-buttons {
@@ -135,7 +186,7 @@
         }
 
         .btn {
-            padding: 12px 30px;
+            padding: 14px 35px;
             border: none;
             border-radius: 50px;
             font-size: 1rem;
@@ -143,12 +194,15 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .btn-primary {
             background: white;
-            color: #667eea;
+            color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .btn-secondary {
@@ -159,37 +213,203 @@
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
 
-        /* Floating particles */
-        .particle {
-            position: absolute;
+        .btn-primary:hover {
+            background: #f7fafc;
+        }
+
+        .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        .scroll-indicator i {
+            font-size: 2rem;
+            color: white;
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About/Story Section */
+        .story-section {
+            padding: 6rem 0;
+            background: linear-gradient(to bottom, white, var(--bg-light));
+        }
+
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .story-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .story-intro h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .story-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .story-grid {
+            display: grid;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .story-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+        }
+
+        .story-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .story-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .story-card p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .story-highlight {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            margin-top: 1.5rem;
+        }
+
+        .story-highlight p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(240, 147, 251, 0.05));
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
         }
 
         /* Sections */
         .section {
             padding: 5rem 0;
-            background: white;
         }
 
         .section:nth-child(even) {
-            background: #f8f9fa;
+            background: var(--bg-light);
         }
 
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: #333;
+            color: var(--text-dark);
+            position: relative;
         }
 
         .section-title::after {
@@ -197,7 +417,7 @@
             display: block;
             width: 60px;
             height: 4px;
-            background: #667eea;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
             margin: 1rem auto;
             border-radius: 2px;
         }
@@ -211,115 +431,187 @@
 
         .experience-card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid #667eea;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            opacity: 0.05;
+            border-radius: 0 20px 0 100%;
         }
 
         .experience-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
         }
 
-        .company {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #667eea;
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .company-info {
+            flex: 1;
+        }
+
+        .company-name {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            font-weight: 700;
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .company-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: contain;
         }
 
         .role {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
             font-weight: 600;
-            color: #333;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
-        .duration {
-            color: #666;
-            margin-bottom: 1rem;
+        .period {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
 
         .achievements {
             list-style: none;
+            margin-top: 1.5rem;
         }
 
         .achievements li {
-            margin-bottom: 0.5rem;
             padding-left: 1.5rem;
+            margin-bottom: 1rem;
             position: relative;
+            color: var(--text-light);
+            line-height: 1.7;
         }
 
         .achievements li::before {
-            content: '▸';
+            content: '▹';
             position: absolute;
             left: 0;
-            color: #667eea;
-            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
         }
 
         /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .project-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
 
         .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 4rem;
             color: white;
-            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
         }
 
         .project-content {
             padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-title {
-            font-size: 1.3rem;
-            font-weight: bold;
+            font-size: 1.4rem;
+            color: var(--text-dark);
             margin-bottom: 1rem;
-            color: #333;
+            font-weight: 700;
         }
 
         .project-description {
-            color: #666;
-            margin-bottom: 1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex: 1;
         }
 
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .tech-tag {
-            background: #f0f2ff;
-            color: #667eea;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.9rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
+            color: var(--primary-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
@@ -329,20 +621,28 @@
         }
 
         .project-link {
-            color: #667eea;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--primary-color);
+            color: white;
             text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
             font-weight: 600;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .project-link:hover {
-            color: #764ba2;
+            background: var(--secondary-color);
+            transform: translateY(-2px);
         }
 
         /* Skills Section */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -350,131 +650,112 @@
         .skill-category {
             background: white;
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
         .skill-category h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .skill-category h3 i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
         }
 
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.7rem;
         }
 
         .skill-tag {
-            background: #f8f9fa;
-            color: #333;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.05));
+            color: var(--text-dark);
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
             font-size: 0.9rem;
+            font-weight: 500;
             transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.2);
         }
 
         .skill-tag:hover {
-            background: #667eea;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             color: white;
             transform: translateY(-2px);
         }
 
         /* Contact Section */
         .contact {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #ffffff;
-            position: relative;
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1;
-        }
-
-        .contact .container {
-            position: relative;
-            z-index: 2;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
         }
 
         .contact .section-title {
-            color: #ffffff !important;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: white;
         }
 
         .contact .section-title::after {
-            background: #ffffff;
-        }
-
-        .contact-content {
-            color: #ffffff;
-        }
-
-        .contact-content p {
-            color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            background: white;
         }
 
         .contact-content {
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
 
         .contact-link {
-            color: #ffffff;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             width: 60px;
             height: 60px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .contact-link:hover {
-            transform: scale(1.2);
-            background: rgba(255, 255, 255, 0.2);
-            border-color: #ffffff;
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-5px) scale(1.1);
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* Fade-in animation */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .fade-in.visible {
@@ -482,18 +763,31 @@
             transform: translateY(0);
         }
 
-        /* Mobile Responsiveness */
+        /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
 
+            .hero .tagline {
+                font-size: 1.4rem;
+            }
+
             .hero .subtitle {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
 
             .nav-links {
-                display: none;
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .story-intro h2 {
+                font-size: 2rem;
             }
 
             .projects-grid {
@@ -503,10 +797,18 @@
             .skills-container {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .contact-links {
-                gap: 1rem;
-            }
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer p {
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -515,9 +817,10 @@
     <nav id="navbar">
         <div class="container">
             <div class="nav-container">
-                <div class="logo">SNB</div>
+                <div class="logo">SN</div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
@@ -530,60 +833,198 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <img src="profile.jpg" alt="Sanath Nagendra Bhargav" class="profile-picture">
+            <img src="https://via.placeholder.com/180" alt="Sanath Nagendra Bhargav" class="profile-picture">
             <h1>Sanath Nagendra Bhargav</h1>
-            <div class="subtitle">AI/ML Engineer & Software Developer</div>
-            <div class="description">
-                USC MS CS Student | Ex-Cisco Software Engineer | Specializing in Generative AI, Computer Vision, and Large-Scale Systems
-            </div>
+            <p class="tagline">AI Engineer | Full-Stack Developer | Problem Solver</p>
+            <p class="subtitle">
+                Transforming complex challenges into elegant solutions.
+            </p>
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="mailto:sanathna@usc.edu" class="btn btn-secondary">Get In Touch</a>
+                <a href="#about" class="btn btn-primary">
+                    <i class="fas fa-user"></i> Learn More
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Get in Touch
+                </a>
             </div>
         </div>
-        
-        <!-- Floating particles -->
-        <div class="particle" style="width: 20px; height: 20px; top: 20%; left: 10%; animation-delay: 0s;"></div>
-        <div class="particle" style="width: 15px; height: 15px; top: 60%; left: 85%; animation-delay: 2s;"></div>
-        <div class="particle" style="width: 25px; height: 25px; top: 80%; left: 20%; animation-delay: 4s;"></div>
-        <div class="particle" style="width: 18px; height: 18px; top: 30%; left: 80%; animation-delay: 1s;"></div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About/Story Section -->
+    <section id="about" class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-intro fade-in">
+                    <h2>The Journey</h2>
+                    <p style="font-size: 1.2rem; color: var(--text-light); margin-top: 2rem;">
+                        From cricket fields in Bengaluru to building AI systems in Los Angeles
+                    </p>
+                </div>
+
+                <div class="story-grid">
+                    <div class="story-card fade-in">
+                        <div class="story-card-header">
+                            <div class="story-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>The Spark</h3>
+                        </div>
+                        <p>
+                            Growing up in Bengaluru, India's Silicon Valley, I was surrounded by technology and innovation. But it was cricket—India's obsession—that first taught me about strategy, patterns, and data. Watching matches, I'd notice how certain bowlers struggled against specific batsmen, how field placements could change game outcomes.
+                        </p>
+                        <p>
+                            This fascination led me to wonder: <em>What if we could quantify cricket intelligence? What if AI could analyze decades of matches to find patterns invisible to the human eye?</em> That question became my north star.
+                        </p>
+                        <div class="story-highlight">
+                            <p>
+                                "Every complex problem is just an unsolved puzzle waiting for the right algorithm."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <div class="story-card-header">
+                            <div class="story-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3>Building at Scale</h3>
+                        </div>
+                        <p>
+                            At PES University, I dove deep into computer science, but theory wasn't enough. I needed to build. My breakthrough came with the Cricket Analytics Recommender System—the first BERT-based NLP system that could analyze opponent weaknesses by processing years of commentary and statistics. Published in Springer, it validated my belief that AI could revolutionize sports strategy.
+                        </p>
+                        <p>
+                            Then came Cisco. Suddenly, I wasn't just building projects—I was managing a $5 billion service serving half a billion devices. The stakes were real. I led the modernization of legacy systems to cloud-native architecture, built APIs from scratch, optimized SQL queries from 2 hours to 1 minute, and developed Gen-AI tools that could query across three different database systems seamlessly.
+                        </p>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-number">$5B</span>
+                                <span class="stat-label">Annual Revenue Managed</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">500M+</span>
+                                <span class="stat-label">Devices Served</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">120x</span>
+                                <span class="stat-label">Query Performance Boost</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">96%</span>
+                                <span class="stat-label">Test Coverage (AI Tool)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <div class="story-card-header">
+                            <div class="story-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3>What Drives Me</h3>
+                        </div>
+                        <p>
+                            I'm obsessed with three things: <strong>AI that solves real problems</strong>, <strong>systems that scale</strong>, and <strong>code that's elegant</strong>. Whether it's using LIDAR data for autonomous vehicles at Mercedes Benz, building distributed messaging systems from scratch, or applying deep learning to agricultural yield prediction—I look for challenges that push boundaries.
+                        </p>
+                        <p>
+                            Now at USC pursuing my Master's in AI, I'm diving deeper into the theoretical foundations while keeping my hands dirty with practical implementations. My goal isn't just to use AI—it's to advance it. To build systems that don't just work, but work intelligently, efficiently, and at scale.
+                        </p>
+                        <div class="story-highlight">
+                            <p>
+                                <strong>My Philosophy:</strong> The best engineers don't just solve today's problems—they build systems that make tomorrow's problems easier to solve.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <div class="story-card-header">
+                            <div class="story-icon">
+                                <i class="fas fa-compass"></i>
+                            </div>
+                            <h3>What's Next</h3>
+                        </div>
+                        <p>
+                            I'm looking for opportunities where I can work on cutting-edge AI/ML problems—whether that's computer vision for autonomous systems, NLP for understanding human behavior, or distributed systems that handle billions of requests. I want to work with teams that value both innovation and execution, where "impossible" is just the starting point.
+                        </p>
+                        <p>
+                            I believe the next decade of AI won't be about making AI smarter—it'll be about making it more practical, more accessible, and more deeply integrated into systems that touch billions of lives. I want to be at the forefront of that transformation.
+                        </p>
+                        <p>
+                            <strong>Interests beyond code:</strong> When I'm not building systems, you'll find me swimming, hiking, exploring LA's food scene, or diving into the world of cinema.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Experience Section -->
     <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title fade-in">Professional Experience</h2>
+            <h2 class="section-title fade-in">Experience</h2>
             <div class="experience-grid">
                 <div class="experience-card fade-in">
-                    <div class="company">Cisco</div>
-                    <div class="duration">January 2024 – July 2025</div>
-                    
-                    <div class="role" style="margin-top: 1.5rem;">Software Engineer</div>
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <div class="company-name">
+                                <span>Cisco Systems</span>
+                            </div>
+                            <div class="role">Software Engineer</div>
+                            <div class="period">
+                                <i class="far fa-calendar"></i>
+                                August 2024 – July 2025
+                            </div>
+                        </div>
+                    </div>
                     <ul class="achievements">
-                        <li>Managed $5B annual revenue SNTC service serving 0.5B devices and 25K+ customers</li>
-                        <li>Led SNTC-to-CX Cloud modernization implementing 16 APIs from scratch</li>
-                        <li>Optimized critical SQL queries reducing execution time from 2hrs to 1min for 10,000+ row datasets</li>
-                        <li>Built Gen-AI tool enabling cross-database insights from MongoDB, SQL, and Cassandra sources</li>
-                        <li>Winner: Cisco Gen-AI Hackathon for test-case automation tool achieving 96% coverage</li>
-                        <li>Migrated JMX to Kafka architecture, reducing compute utilization by 50%</li>
-                    </ul>
-                    
-                    <div class="role" style="margin-top: 1.5rem;">Software Engineering Intern</div>
-                    <ul class="achievements">
-                        <li>Developed API endpoint for PX Cloud architecture, enhancing response speed by 30%</li>
-                        <li>Architected data flow solutions for multi-layered database with 200+ views, reducing integration complexity by 40%</li>
-                        <li>Created open-source Java SDK for PX Cloud API: px-cloud-java-sdk</li>
+                        <li>Managed $5B annual revenue SNTC-PSS service serving 0.5B devices and 25K+ customers, collaborating within 40-member team for automated visibility, security alerts, and technical support</li>
+                        <li>Led SNTC-to-CX Cloud modernization by implementing 16 APIs from scratch with backward-compatibility mechanisms, maintaining legacy contracts while supporting cloud-native architecture</li>
+                        <li>Implemented multi-region routing with automated data transformation and standardized AWS infrastructure using Terraform</li>
+                        <li>Optimized critical SQL queries for large-scale data retrieval, reducing execution time from 2hrs to 1min for 10,000+ row datasets (120x improvement)</li>
+                        <li>Built Gen-AI tool enabling cross-database insights from MongoDB, SQL, and Cassandra sources spanning 3 schemas and 80 views</li>
+                        <li>Migrated JMX to Kafka architecture, reducing compute utilization by 50% through optimized queuing and burst load management</li>
+                        <li><strong>Winner:</strong> Cisco Gen-AI Hackathon for test-case automation tool achieving 96% coverage; <strong>Runner-up:</strong> AI Sustainability Hackathon</li>
                     </ul>
                 </div>
 
                 <div class="experience-card fade-in">
-                    <div class="company">Mercedes-Benz Research and Development</div>
-                    <div class="role">Perception Engineering Intern</div>
-                    <div class="duration">October 2023 – January 2024</div>
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <div class="company-name">
+                                <span>Cisco Systems</span>
+                            </div>
+                            <div class="role">Software Engineering Intern</div>
+                            <div class="period">
+                                <i class="far fa-calendar"></i>
+                                January 2024 – June 2024
+                            </div>
+                        </div>
+                    </div>
                     <ul class="achievements">
-                        <li>Constructed virtual road lanes for ADAS L4 using LIDAR data and clustering algorithms</li>
-                        <li>Developed solutions for unmarked toll points leading to patent consideration</li>
-                        <li>Worked on autonomous driving perception systems using computer vision</li>
+                        <li>Developed API endpoint for PX Cloud architecture, enhancing response speed by 30% and improved scheduler functionality</li>
+                        <li>Architected data flow solutions for multi-layered database with 200+ views, reducing integration complexity by 40%</li>
+                        <li>Created open-source Java SDK for PX Cloud API: px-cloud-java-sdk, enabling seamless developer integration with Cisco's cloud platform</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <div class="company-name">
+                                <span>Mercedes Benz R&D</span>
+                            </div>
+                            <div class="role">Perception Engineering Intern</div>
+                            <div class="period">
+                                <i class="far fa-calendar"></i>
+                                October 2023 – January 2024
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="achievements">
+                        <li>Constructed virtual road lanes for ADAS L4 using LIDAR data and clustering algorithms for unmarked toll points</li>
+                        <li>Work led to patent consideration for novel approach to autonomous vehicle perception in challenging environments</li>
                     </ul>
                 </div>
             </div>
@@ -597,45 +1038,23 @@
             <div class="projects-grid">
                 <div class="project-card fade-in">
                     <div class="project-image">
-                        <i class="fas fa-brain"></i>
+                        <i class="fas fa-cricket-ball-batsman"></i>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Cricket Analytics Recommender System</h3>
                         <p class="project-description">
-                            First-of-its-kind BERT-based NLP system analyzing opponent performance data to identify strategic weaknesses. Published in Springer.
+                            Developed the first-of-its-kind BERT-based NLP system analyzing opponent performance data to identify strategic weaknesses. Uses transformer models to process years of cricket commentary and statistics. Published in Springer.
                         </p>
                         <div class="tech-stack">
                             <span class="tech-tag">BERT</span>
                             <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">Python</span>
                             <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Data Analytics</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://link.springer.com/chapter/10.1007/978-981-99-8031-4_45" class="project-link" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Publication
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Vision Transformer Street Segmentation</h3>
-                        <p class="project-description">
-                            Implemented ViT architecture for pixel-level semantic segmentation and classification achieving 96% accuracy on Cityscapes dataset.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Vision Transformer</span>
-                            <span class="tech-tag">Computer Vision</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">OpenCV</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Sanath-07/ViTSeg/tree/main" class="project-link" target="_blank">
-                                <i class="fab fa-github"></i> GitHub
+                            <a href="https://link.springer.com" class="project-link" target="_blank">
+                                <i class="fas fa-book"></i> Publication
                             </a>
                         </div>
                     </div>
@@ -648,17 +1067,18 @@
                     <div class="project-content">
                         <h3 class="project-title">Agricultural Yield Prediction</h3>
                         <p class="project-description">
-                            Enhanced agricultural predictions using 12 years of MODIS imagery and LSTM models, achieving RMSE of 0.12. Published in Springer.
+                            Enhanced agricultural predictions using 12 years of MODIS satellite imagery and LSTM models, achieving RMSE of 0.12. Helps farmers optimize crop planning through time-series analysis. Published in Springer.
                         </p>
                         <div class="tech-stack">
                             <span class="tech-tag">LSTM</span>
-                            <span class="tech-tag">Time Series</span>
+                            <span class="tech-tag">TensorFlow</span>
                             <span class="tech-tag">Satellite Imagery</span>
-                            <span class="tech-tag">Deep Learning</span>
+                            <span class="tech-tag">Time Series</span>
+                            <span class="tech-tag">Computer Vision</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://link.springer.com/chapter/10.1007/978-981-97-3588-4_33" class="project-link" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Publication
+                            <a href="https://link.springer.com" class="project-link" target="_blank">
+                                <i class="fas fa-book"></i> Publication
                             </a>
                         </div>
                     </div>
@@ -666,17 +1086,41 @@
 
                 <div class="project-card fade-in">
                     <div class="project-image">
-                        <i class="fas fa-stream"></i>
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Vision Transformer Street Segmentation</h3>
+                        <p class="project-description">
+                            Implemented ViT architecture for pixel-level semantic segmentation and classification achieving 96% accuracy on Cityscapes dataset. Advanced autonomous driving perception capabilities.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Vision Transformers</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Semantic Segmentation</span>
+                            <span class="tech-tag">Computer Vision</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Sanath-07" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <i class="fas fa-network-wired"></i>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Kafka Clone - Distributed Messaging</h3>
                         <p class="project-description">
-                            Built complete distributed messaging system using socket programming with Brokers, Consumers, Producers, and ZooKeeper implementation.
+                            Built complete distributed messaging system from scratch using socket programming with Brokers, Consumers, Producers, and ZooKeeper for coordination. Deep dive into distributed systems architecture.
                         </p>
                         <div class="tech-stack">
-                            <span class="tech-tag">Java</span>
                             <span class="tech-tag">Distributed Systems</span>
                             <span class="tech-tag">Socket Programming</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">ZooKeeper</span>
                             <span class="tech-tag">Microservices</span>
                         </div>
                         <div class="project-links">
@@ -694,7 +1138,7 @@
                     <div class="project-content">
                         <h3 class="project-title">PX Cloud Java SDK</h3>
                         <p class="project-description">
-                            Created open-source Java SDK for Cisco PX Cloud API, enabling developers to integrate with Cisco's cloud architecture seamlessly.
+                            Created open-source Java SDK for Cisco PX Cloud API, enabling developers to integrate with Cisco's cloud architecture seamlessly. Available on Cisco DevNet.
                         </p>
                         <div class="tech-stack">
                             <span class="tech-tag">Java</span>
@@ -766,6 +1210,8 @@
                         <span class="skill-tag">NLP</span>
                         <span class="skill-tag">Generative AI</span>
                         <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">Vector Embeddings</span>
                     </div>
                 </div>
 
@@ -780,6 +1226,7 @@
                         <span class="skill-tag">Jenkins</span>
                         <span class="skill-tag">CI/CD</span>
                         <span class="skill-tag">MLOps</span>
+                        <span class="skill-tag">Linux</span>
                     </div>
                 </div>
 
@@ -804,9 +1251,9 @@
     <section id="contact" class="contact section">
         <div class="container">
             <div class="contact-content fade-in">
-                <h2 class="section-title">Let's Connect</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
-                    Interested in collaborating on AI/ML projects or discussing opportunities? I'd love to hear from you!
+                <h2 class="section-title">Let's Build Something Amazing</h2>
+                <p>
+                    Whether you're looking to collaborate on AI/ML projects, discuss opportunities, or just chat about the latest in tech—I'd love to connect!
                 </p>
                 <div class="contact-links">
                     <a href="mailto:sanathna@usc.edu" class="contact-link" title="Email">
@@ -825,6 +1272,13 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sanath Nagendra Bhargav. Crafted with passion and code.</p>
+        </div>
+    </footer>
 
     <script>
         // Smooth scrolling for navigation links
@@ -869,29 +1323,11 @@
             observer.observe(el);
         });
 
-        // Typing effect for hero subtitle (optional enhancement)
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            
-            type();
-        }
-
-        // Initialize typing effect after page load
-        window.addEventListener('load', () => {
-            const subtitle = document.querySelector('.hero .subtitle');
-            const originalText = subtitle.textContent;
-            setTimeout(() => {
-                typeWriter(subtitle, originalText, 80);
-            }, 1000);
+        // Scroll indicator functionality
+        document.querySelector('.scroll-indicator').addEventListener('click', function() {
+            document.querySelector('#about').scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>
