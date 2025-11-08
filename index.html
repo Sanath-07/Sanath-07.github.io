@@ -523,7 +523,882 @@
             font-size: 1.2rem;
         }
 
-        /* Projects Grid */
+        /* Cisco Story Timeline Styles */
+        .cisco-story-section {
+            background: linear-gradient(to bottom, var(--bg-light), white);
+            padding: 6rem 0;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-marker {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .timeline-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            z-index: 2;
+        }
+
+        .timeline-line {
+            width: 4px;
+            flex: 1;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            margin-top: 1rem;
+            opacity: 0.3;
+        }
+
+        .timeline-item:last-child .timeline-line {
+            display: none;
+        }
+
+        .timeline-content {
+            padding-top: 0.5rem;
+        }
+
+        .timeline-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+        }
+
+        .timeline-card.highlight-card {
+            border-left: 5px solid var(--primary-color);
+            background: linear-gradient(to right, rgba(102, 126, 234, 0.02), white);
+        }
+
+        .timeline-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .timeline-header h3 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-period {
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-period::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .timeline-description {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .story-highlights-inline {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-inline {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(240, 147, 251, 0.05));
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .highlight-inline i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .highlight-inline strong {
+            color: var(--text-dark);
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-inline p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .key-learning {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .key-learning i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .key-learning p {
+            color: var(--text-dark);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .highlight-learning {
+            background: linear-gradient(135deg, rgba(245, 87, 108, 0.15), rgba(240, 147, 251, 0.15));
+            border-left: 4px solid #f5576c;
+        }
+
+        .challenge-section {
+            background: linear-gradient(135deg, rgba(237, 100, 166, 0.1), rgba(159, 122, 234, 0.1));
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #ed64a6;
+        }
+
+        .challenge-section h4 {
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .challenge-section i {
+            color: #ed64a6;
+        }
+
+        .challenge-section p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .implementation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .impl-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--bg-light);
+            transition: all 0.3s ease;
+        }
+
+        .impl-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+        }
+
+        .impl-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .impl-card h5 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .impl-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .migrations-section {
+            margin: 2.5rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(72, 187, 120, 0.05), rgba(56, 161, 105, 0.05));
+            border-radius: 12px;
+            border-left: 4px solid #48bb78;
+        }
+
+        .migrations-section h4 {
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .migrations-section i {
+            color: #48bb78;
+        }
+
+        .migrations-section > p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .migration-list {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .migration-item {
+            display: flex;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .migration-badge {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .migration-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+            padding-top: 0.3rem;
+        }
+
+        .poc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .poc-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(240, 147, 251, 0.05));
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .poc-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .poc-header {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 1rem;
+        }
+
+        .poc-header i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .poc-header h5 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .poc-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .poc-status {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .hackathon-wins {
+            margin: 2.5rem 0;
+        }
+
+        .hackathon-wins h4 {
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hackathon-wins i {
+            color: #f6ad55;
+        }
+
+        .win-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .win-card {
+            padding: 2rem;
+            border-radius: 16px;
+            border: 3px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .win-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            opacity: 0.1;
+            border-radius: 0 16px 0 100%;
+        }
+
+        .win-card.winner {
+            border-color: #f6ad55;
+            background: linear-gradient(135deg, rgba(246, 173, 85, 0.1), rgba(237, 137, 54, 0.05));
+        }
+
+        .win-card.winner::before {
+            background: #f6ad55;
+        }
+
+        .win-card.runner {
+            border-color: #cbd5e0;
+            background: linear-gradient(135deg, rgba(203, 213, 224, 0.1), rgba(160, 174, 192, 0.05));
+        }
+
+        .win-card.runner::before {
+            background: #cbd5e0;
+        }
+
+        .win-badge {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .win-card h5 {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .win-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .impact-summary {
+            background: linear-gradient(135deg, rgba(237, 137, 54, 0.1), rgba(221, 107, 32, 0.05));
+            border-left: 5px solid #ed8936;
+        }
+
+        .impact-summary h3 {
+            color: var(--text-dark);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .impact-summary h3 i {
+            color: #ed8936;
+        }
+
+        .impact-stats {
+            margin: 2rem 0;
+        }
+
+        .impact-stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+
+        .impact-stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid rgba(237, 137, 54, 0.2);
+        }
+
+        .impact-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ed8936, #dd6b20);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .what-i-learned {
+            margin: 2.5rem 0;
+        }
+
+        .what-i-learned h4 {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .lesson-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid rgba(237, 137, 54, 0.2);
+        }
+
+        .lesson-item i {
+            font-size: 1.5rem;
+            color: #ed8936;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .lesson-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .lesson-item strong {
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .looking-forward {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .looking-forward p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .looking-forward strong {
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ENHANCED PROJECTS SECTION */
+        .projects-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .projects-header p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+
+        .project-detailed {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            margin-bottom: 4rem;
+            transition: all 0.4s ease;
+        }
+
+        .project-detailed:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 70px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-banner {
+            height: 280px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-banner::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .project-banner-icon {
+            font-size: 6rem;
+            color: white;
+            z-index: 1;
+        }
+
+        .project-body {
+            padding: 3rem;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .meta-item i {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .project-title-main {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-description-full {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+
+        .project-highlights {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(240, 147, 251, 0.05));
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .project-highlights h4 {
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-highlights h4 i {
+            color: var(--primary-color);
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .highlight-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-content h5 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .highlight-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .metrics-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .metric-box {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: white;
+            border-radius: 16px;
+            border: 2px solid var(--bg-light);
+            transition: all 0.3s ease;
+        }
+
+        .metric-box:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .tech-stack-detailed {
+            margin: 2rem 0;
+        }
+
+        .tech-stack-detailed h4 {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tech-stack-detailed h4 i {
+            color: var(--primary-color);
+        }
+
+        .tech-tags-detailed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tech-tag-detailed {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
+            color: var(--primary-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag-detailed:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .action-btn:hover {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .action-btn.secondary:hover {
+            background: var(--bg-light);
+        }
+
+        .project-impact {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+        }
+
+        .project-impact h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-impact p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        /* Simple Projects Grid */
+        .simple-projects {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 2px solid var(--bg-light);
+        }
+
+        .simple-projects h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -700,15 +1575,15 @@
         /* Contact Section */
         .contact {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
+            color: blue;
         }
 
         .contact .section-title {
-            color: white;
+            color: blue;
         }
 
         .contact .section-title::after {
-            background: white;
+            background: blue;
         }
 
         .contact-content {
@@ -738,7 +1613,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: blue;
             font-size: 1.5rem;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -746,7 +1621,7 @@
         }
 
         .contact-link:hover {
-            background: white;
+            background: blue;
             color: var(--primary-color);
             transform: translateY(-5px) scale(1.1);
         }
@@ -790,12 +1665,62 @@
                 font-size: 2rem;
             }
 
+            .project-title-main {
+                font-size: 1.8rem;
+            }
+
+            .project-banner {
+                height: 200px;
+            }
+
+            .project-banner-icon {
+                font-size: 4rem;
+            }
+
+            .project-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .metrics-showcase {
+                grid-template-columns: 1fr;
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
             }
 
             .skills-container {
                 grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 60px 1fr;
+                gap: 1rem;
+            }
+
+            .timeline-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .timeline-card {
+                padding: 1.5rem;
+            }
+
+            .timeline-header h3 {
+                font-size: 1.4rem;
+            }
+
+            .implementation-grid,
+            .poc-grid,
+            .win-cards,
+            .lesson-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-stat-row {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -837,11 +1762,11 @@
             <h1>Sanath Nagendra Bhargav</h1>
             <p class="tagline">AI Engineer | Full-Stack Developer | Problem Solver</p>
             <p class="subtitle">
-                Transforming complex challenges into elegant solutions.
+                Transforming complex challenges into elegant solutions through cutting-edge AI and scalable systems.
             </p>
             <div class="cta-buttons">
-                <a href="#about" class="btn btn-primary">
-                    <i class="fas fa-user"></i> Learn More
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> View Projects
                 </a>
                 <a href="#contact" class="btn btn-secondary">
                     <i class="fas fa-envelope"></i> Get in Touch
@@ -1031,148 +1956,726 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Cisco Journey Story Section -->
+    <section class="cisco-story-section section">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-intro fade-in">
+                    <h2>The Cisco Journey</h2>
+                    <p style="font-size: 1.2rem; color: var(--text-light); margin-top: 2rem;">
+                        18 months of building at scale, solving production crises, and modernizing a $5B enterprise system
+                    </p>
+                </div>
+
+                <div class="timeline-container">
+                    <!-- Phase 1: PX Cloud -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-marker">
+                            <div class="timeline-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <div class="timeline-line"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="timeline-header">
+                                    <h3>Phase 1: PX Cloud Foundation</h3>
+                                    <span class="timeline-period">January 2024 - June 2024 (4 months)</span>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="timeline-description">
+                                        My Cisco journey began with PX Cloud—a strategic platform that would become the foundation for understanding enterprise-scale architecture. This wasn't just about writing code; it was about learning how Cisco's massive infrastructure ecosystem worked.
+                                    </p>
+                                    <div class="story-highlights-inline">
+                                        <div class="highlight-inline">
+                                            <i class="fas fa-rocket"></i>
+                                            <div>
+                                                <strong>API Development</strong>
+                                                <p>Developed critical API endpoints that improved response speeds by 30%, directly impacting customer experience for thousands of users</p>
+                                            </div>
+                                        </div>
+                                        <div class="highlight-inline">
+                                            <i class="fas fa-database"></i>
+                                            <div>
+                                                <strong>Architectural Deep Dive</strong>
+                                                <p>Architected data flow solutions for multi-layered database with 200+ views, reducing integration complexity by 40%—this taught me how to think at scale</p>
+                                            </div>
+                                        </div>
+                                        <div class="highlight-inline">
+                                            <i class="fas fa-code-branch"></i>
+                                            <div>
+                                                <strong>Open Source Contribution</strong>
+                                                <p>Created a swagger for px-cloud-java-sdk, now used by developers across Cisco to integrate with PX Cloud APIs—my first impact on the broader developer community</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="key-learning">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <p><strong>Key Learning:</strong> Understanding large codebases isn't about memorizing every line—it's about identifying patterns, understanding data flows, and knowing where to look. This foundation became critical for what came next.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2: SNTC-PSS -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-marker">
+                            <div class="timeline-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="timeline-line"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card highlight-card">
+                                <div class="timeline-header">
+                                    <h3>Phase 2: SNTC-PSS - The Deep End</h3>
+                                    <span class="timeline-period">June 2024 - Present (14 months)</span>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="timeline-description">
+                                        Then came SNTC-PSS—and everything changed. I was suddenly responsible for a <strong>$5 billion annual revenue service</strong> serving <strong>500 million devices</strong> and <strong>25,000+ customers</strong>. No pressure, right? 😅
+                                    </p>
+                                    
+                                    <div class="challenge-section">
+                                        <h4><i class="fas fa-exclamation-triangle"></i> The Challenge</h4>
+                                        <p>
+                                            Cisco was modernizing SNTC-PSS to CX Cloud—a complete architectural overhaul. I was tasked with <strong>building 16 APIs from scratch</strong> on a codebase I'd never seen before, while maintaining backward compatibility with legacy systems. Oh, and production couldn't go down. Ever.
+                                        </p>
+                                    </div>
+
+                                    <div class="implementation-grid">
+                                        <div class="impl-card">
+                                            <div class="impl-icon">
+                                                <i class="fas fa-code"></i>
+                                            </div>
+                                            <h5>16 APIs from Zero</h5>
+                                            <p>Implemented entire API suite for CX Cloud migration with backward compatibility—learned the codebase by building, not reading</p>
+                                        </div>
+                                        <div class="impl-card">
+                                            <div class="impl-icon">
+                                                <i class="fas fa-globe-americas"></i>
+                                            </div>
+                                            <h5>Multi-Region Routing</h5>
+                                            <p>Developed 4 different routing solutions for request distribution across global regions with automated data transformation</p>
+                                        </div>
+                                        <div class="impl-card">
+                                            <div class="impl-icon">
+                                                <i class="fas fa-tachometer-alt"></i>
+                                            </div>
+                                            <h5>Performance Optimization</h5>
+                                            <p>Optimized SQL queries from 2 hours → 1 minute (120x improvement) for 10K+ row datasets—production users noticed immediately</p>
+                                        </div>
+                                        <div class="impl-card">
+                                            <div class="impl-icon">
+                                                <i class="fas fa-robot"></i>
+                                            </div>
+                                            <h5>Gen-AI Tool</h5>
+                                            <p>Built internal summarization tool deployed on Cisco cloud cluster—querying across MongoDB, SQL, and Cassandra (3 schemas, 80 views)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="migrations-section">
+                                        <h4><i class="fas fa-exchange-alt"></i> Mission-Critical Migrations</h4>
+                                        <p>Simultaneously led 3 major infrastructure migrations that couldn't afford downtime:</p>
+                                        <div class="migration-list">
+                                            <div class="migration-item">
+                                                <span class="migration-badge">JMX → Kafka</span>
+                                                <p>Modernized messaging architecture, reducing compute utilization by 50% through optimized queuing and burst load management</p>
+                                            </div>
+                                            <div class="migration-item">
+                                                <span class="migration-badge">Cisco → Microsoft Email</span>
+                                                <p>Seamless transition of enterprise email system for a messaging service</p>
+                                            </div>
+                                            <div class="migration-item">
+                                                <span class="migration-badge">PING → DUO</span>
+                                                <p>Enhanced authentication system migration maintaining security compliance</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="key-learning highlight-learning">
+                                        <i class="fas fa-fire"></i>
+                                        <p><strong>The Reality of Production:</strong> When things break at 3 AM and 25,000 customers are affected, you learn to think differently. My approach: find a temporary working solution <em>first</em> (stop the bleeding), then architect the permanent fix. This taught me the difference between "working code" and "production-grade code."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3: Innovation -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-marker">
+                            <div class="timeline-icon" style="background: linear-gradient(135deg, #48bb78, #38a169);">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div class="timeline-line"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card">
+                                <div class="timeline-header">
+                                    <h3>Phase 3: Beyond the Backlog</h3>
+                                    <span class="timeline-period">Self-Initiated POCs & Innovations</span>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="timeline-description">
+                                        While managing production demands, I saw opportunities for improvement everywhere. Instead of waiting for assignments, I started building proofs-of-concept on my own time.
+                                    </p>
+                                    
+                                    <div class="poc-grid">
+                                        <div class="poc-card">
+                                            <div class="poc-header">
+                                                <i class="fas fa-shield-alt"></i>
+                                                <h5>SSL/Kerberos on Cassandra</h5>
+                                            </div>
+                                            <p>Enhanced database security layer—proved feasibility for enterprise-wide rollout</p>
+                                            <span class="poc-status">Adopted for Production</span>
+                                        </div>
+                                        <div class="poc-card">
+                                            <div class="poc-header">
+                                                <i class="fas fa-envelope-open-text"></i>
+                                                <h5>Microsoft IMAP Integration</h5>
+                                            </div>
+                                            <p>Streamlined email system integration reducing manual overhead</p>
+                                            <span class="poc-status">In Review</span>
+                                        </div>
+                                        <div class="poc-card">
+                                            <div class="poc-header">
+                                                <i class="fas fa-plug"></i>
+                                                <h5>DB-Connector Tool</h5>
+                                            </div>
+                                            <p>Cross-schema database query tool—became the foundation for the Gen-AI summarization system</p>
+                                            <span class="poc-status">Deployed Internally</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hackathon-wins">
+                                        <h4><i class="fas fa-trophy"></i> Recognition & Impact</h4>
+                                        <div class="win-cards">
+                                            <div class="win-card winner">
+                                                <div class="win-badge">🥇 Winner</div>
+                                                <h5>Cisco Gen-AI Hackathon</h5>
+                                                <p>Test-case automation tool achieving <strong>96% coverage</strong>—now being integrated into team's CI/CD pipeline</p>
+                                            </div>
+                                            <div class="win-card runner">
+                                                <div class="win-badge">🥈 Runner-up</div>
+                                                <h5>AI Sustainability Hackathon</h5>
+                                                <p>Solution for optimizing cloud resource allocation using predictive ML models</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="key-learning">
+                                        <i class="fas fa-star"></i>
+                                        <p><strong>Key Insight:</strong> The best engineers don't wait for problems to be handed to them—they identify inefficiencies and build solutions. Every POC I built addressed a real pain point I observed in daily operations.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Impact Summary -->
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-marker">
+                            <div class="timeline-icon" style="background: linear-gradient(135deg, #ed8936, #dd6b20);">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-card impact-summary">
+                                <h3><i class="fas fa-bullseye"></i> The Cisco Impact</h3>
+                                <div class="impact-stats">
+                                    <div class="impact-stat-row">
+                                        <div class="impact-stat-item">
+                                            <span class="impact-number">16</span>
+                                            <span class="impact-label">APIs Built from Scratch</span>
+                                        </div>
+                                        <div class="impact-stat-item">
+                                            <span class="impact-number">6</span>
+                                            <span class="impact-label">Major Migrations Led</span>
+                                        </div>
+                                        <div class="impact-stat-item">
+                                            <span class="impact-number">3</span>
+                                            <span class="impact-label">Self-Initiated POCs</span>
+                                        </div>
+                                        <div class="impact-stat-item">
+                                            <span class="impact-number">120x</span>
+                                            <span class="impact-label">Performance Improvement</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="what-i-learned">
+                                    <h4>What 18 Months at Cisco Taught Me</h4>
+                                    <div class="lesson-grid">
+                                        <div class="lesson-item">
+                                            <i class="fas fa-brain"></i>
+                                            <p><strong>Scale Changes Everything:</strong> Code that works for 100 users fails differently than code for 500M devices. Every decision has cascading consequences.</p>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="fas fa-users"></i>
+                                            <p><strong>Production Is a Team Sport:</strong> You're never coding alone—40+ teammates, 25K+ customers, and millions of devices depend on your decisions.</p>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="fas fa-clock"></i>
+                                            <p><strong>Speed vs. Correctness:</strong> Sometimes "good enough right now" saves the day, but you always circle back to make it right. Knowing which approach to take comes with experience.</p>
+                                        </div>
+                                        <div class="lesson-item">
+                                            <i class="fas fa-lightbulb"></i>
+                                            <p><strong>Initiative Matters:</strong> The DB-connector POC I built on my own became the foundation for a Gen-AI tool deployed across the team. Sometimes the best projects aren't assigned—they're discovered.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="looking-forward">
+                                    <p>
+                                        <strong>What's Next?</strong> These 18 months transformed me from someone who could write code to someone who could architect systems, lead migrations, and solve production crises at 3 AM. I'm ready for the next challenge—building AI systems that operate at even greater scale, where the problems are harder and the impact is bigger.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENHANCED Projects Section -->
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title fade-in">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <i class="fas fa-cricket-ball-batsman"></i>
+            <div class="projects-header fade-in">
+                <h2 class="section-title">Featured Research & Projects</h2>
+                <p>
+                    Exploring the intersection of AI, real-world impact, and scalable systems through published research and production-grade implementations
+                </p>
+            </div>
+
+            <!-- Project 1: Cricket Analytics -->
+            <div class="project-detailed fade-in">
+                <div class="project-banner">
+                    <i class="fas fa-chart-line project-banner-icon"></i>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-book"></i>
+                            <span>Published in Springer 2023</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>Team of 5 Researchers</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>6-Month Research Project</span>
+                        </div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Cricket Analytics Recommender System</h3>
-                        <p class="project-description">
-                            Developed the first-of-its-kind BERT-based NLP system analyzing opponent performance data to identify strategic weaknesses. Uses transformer models to process years of cricket commentary and statistics. Published in Springer.
+
+                    <h3 class="project-title-main">The Winning Edge: Cricket Analytics Recommender System</h3>
+                    <p class="project-subtitle">First-of-its-kind BERT-based NLP System for Sports Strategy Optimization</p>
+
+                    <p class="project-description-full">
+                        Developed a groundbreaking hybrid content-based recommender system powered by the advanced BERT model that revolutionizes cricket preparation. The system identifies a player's weaknesses by analyzing opponent performance data through natural language processing of match commentary, statistics, and strategic patterns accumulated over years of international cricket.
+                    </p>
+
+                    <div class="project-highlights">
+                        <h4><i class="fas fa-star"></i> Key Innovations</h4>
+                        <div class="highlights-grid">
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>BERT-Powered Analysis</h5>
+                                    <p>Leveraged transformer architecture to extract contextual insights from cricket commentary, achieving 91.6% accuracy in shot prediction</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>StatHive Dataset</h5>
+                                    <p>Created comprehensive cricket analytics dataset through multi-step pipeline combining web scraping and BERT-based keyword extraction</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>Strategic Recommendations</h5>
+                                    <p>Provides tailored shot selections and field placements based on opponent analysis, pitch conditions, and match context</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>Industry First</h5>
+                                    <p>First system to combine masked language modeling with hybrid recommender techniques for sports analytics</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-showcase">
+                        <div class="metric-box">
+                            <span class="metric-value">94.65%</span>
+                            <span class="metric-label">Shot Prediction Accuracy (ANN)</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-value">91.6%</span>
+                            <span class="metric-label">BERT Model Performance</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-value">35,000</span>
+                            <span class="metric-label">Training Queries Processed</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-value">10+</span>
+                            <span class="metric-label">Life Domains Analyzed</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-stack-detailed">
+                        <h4><i class="fas fa-code"></i> Technology Stack</h4>
+                        <div class="tech-tags-detailed">
+                            <span class="tech-tag-detailed">BERT Transformers</span>
+                            <span class="tech-tag-detailed">Masked Language Modeling</span>
+                            <span class="tech-tag-detailed">PyTorch</span>
+                            <span class="tech-tag-detailed">KeyBERT</span>
+                            <span class="tech-tag-detailed">Neural Networks (ANN)</span>
+                            <span class="tech-tag-detailed">NLP</span>
+                            <span class="tech-tag-detailed">Web Scraping</span>
+                            <span class="tech-tag-detailed">Data Pipeline</span>
+                            <span class="tech-tag-detailed">Python</span>
+                        </div>
+                    </div>
+
+                    <div class="project-impact">
+                        <h4><i class="fas fa-rocket"></i> Real-World Impact</h4>
+                        <p>
+                            This system enables professional cricketers to enhance training strategies by identifying challenging bowler types and receiving specialized shot recommendations. By leveraging data-driven insights, players can address vulnerabilities proactively and make informed decisions during matches. The framework represents a paradigm shift in sports analytics, bridging the gap between advanced AI and practical athletic performance enhancement.
                         </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">BERT</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Data Analytics</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://link.springer.com" class="project-link" target="_blank">
-                                <i class="fas fa-book"></i> Publication
-                            </a>
-                        </div>
+                    </div>
+
+                    <div class="project-actions">
+                        <a href="https://link.springer.com" class="action-btn" target="_blank">
+                            <i class="fas fa-book-open"></i> Read Publication
+                        </a>
+                        <a href="https://gradivareview.com/volume-9-issue-7-2023/" class="action-btn secondary" target="_blank">
+                            <i class="fas fa-database"></i> StatHive Dataset
+                        </a>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <i class="fas fa-seedling"></i>
+            <!-- Project 2: Agricultural Yield Prediction -->
+            <div class="project-detailed fade-in">
+                <div class="project-banner" style="background: linear-gradient(135deg, #48bb78, #38a169);">
+                    <i class="fas fa-satellite project-banner-icon"></i>
+                </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-book"></i>
+                            <span>Published in Springer 2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>Team of 5 Researchers</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-globe"></i>
+                            <span>Karnataka Agricultural Focus</span>
+                        </div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Agricultural Yield Prediction</h3>
-                        <p class="project-description">
-                            Enhanced agricultural predictions using 12 years of MODIS satellite imagery and LSTM models, achieving RMSE of 0.12. Helps farmers optimize crop planning through time-series analysis. Published in Springer.
+
+                    <h3 class="project-title-main">From Pixels to Plow: Enhancing Agricultural Yield with Satellite Data</h3>
+                    <p class="project-subtitle">Deep Learning Framework for Predictive Agriculture Using MODIS Imagery and LSTM Networks</p>
+
+                    <p class="project-description-full">
+                        Developed a comprehensive deep learning framework that leverages 12 years of MODIS (Moderate Resolution Imaging Spectroradiometer) satellite imagery to predict agricultural yields in Karnataka, India. The system combines time-series analysis with LSTM networks to forecast NDVI (Normalized Difference Vegetation Index) patterns, enabling farmers to optimize crop selection and cultivation strategies based on historical vegetation data and predicted environmental conditions.
+                    </p>
+
+                    <div class="project-highlights">
+                        <h4><i class="fas fa-star"></i> Technical Achievements</h4>
+                        <div class="highlights-grid">
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-satellite-dish"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>Satellite Data Processing</h5>
+                                    <p>Processed 12 years of MODIS imagery (144 monthly datasets) covering entire Karnataka region with 1km² spatial resolution</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>LSTM Architecture</h5>
+                                    <p>Implemented sequential LSTM model with 12-month time-steps achieving R²=0.78 on stress prediction and RMSE=0.12 for yield forecasting</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>Crop Cycle Optimization</h5>
+                                    <p>Generated personalized 12-month crop recommendations by matching predicted NDVI with crop-specific growth stages</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>Multi-Crop Support</h5>
+                                    <p>Analyzed 5 major crops (rice, corn, jowar, areca nut, ragi) with NDVI thresholds for each growth stage</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-showcase">
+                        <div class="metric-box">
+                            <span class="metric-value">0.12</span>
+                            <span class="metric-label">RMSE Achievement</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-value">R²=0.78</span>
+                            <span class="metric-label">Model Accuracy</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-value">144</span>
+                            <span class="metric-label">Monthly Datasets</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-value">5 Crops</span>
+                            <span class="metric-label">Agricultural Coverage</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-stack-detailed">
+                        <h4><i class="fas fa-code"></i> Technology Stack</h4>
+                        <div class="tech-tags-detailed">
+                            <span class="tech-tag-detailed">LSTM Networks</span>
+                            <span class="tech-tag-detailed">TensorFlow</span>
+                            <span class="tech-tag-detailed">MODIS Satellite Data</span>
+                            <span class="tech-tag-detailed">NDVI Analysis</span>
+                            <span class="tech-tag-detailed">Time Series Forecasting</span>
+                            <span class="tech-tag-detailed">Computer Vision</span>
+                            <span class="tech-tag-detailed">Remote Sensing</span>
+                            <span class="tech-tag-detailed">Geospatial Analysis</span>
+                            <span class="tech-tag-detailed">Python</span>
+                            <span class="tech-tag-detailed">NumPy/Pandas</span>
+                        </div>
+                    </div>
+
+                    <div class="project-impact">
+                        <h4><i class="fas fa-rocket"></i> Agricultural Impact</h4>
+                        <p>
+                            This research addresses a critical need for data-driven agricultural planning in Karnataka, where farming is the primary livelihood for millions. By predicting vegetation indices 12 months in advance, the system enables farmers to make informed decisions about crop selection, planting schedules, and resource allocation. The framework demonstrated practical applicability with a case study in Yelandur Taluk, generating a year-round crop rotation strategy (rice → corn) optimized for local NDVI patterns. This approach has potential to reduce crop failures, optimize yields, and enhance food security across the Indian agricultural landscape.
                         </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">LSTM</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Satellite Imagery</span>
-                            <span class="tech-tag">Time Series</span>
-                            <span class="tech-tag">Computer Vision</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://link.springer.com" class="project-link" target="_blank">
-                                <i class="fas fa-book"></i> Publication
-                            </a>
-                        </div>
+                    </div>
+
+                    <div class="project-actions">
+                        <a href="https://link.springer.com" class="action-btn" target="_blank">
+                            <i class="fas fa-book-open"></i> Read Publication
+                        </a>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <i class="fas fa-road"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Vision Transformer Street Segmentation</h3>
-                        <p class="project-description">
-                            Implemented ViT architecture for pixel-level semantic segmentation and classification achieving 96% accuracy on Cityscapes dataset. Advanced autonomous driving perception capabilities.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Vision Transformers</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">Semantic Segmentation</span>
-                            <span class="tech-tag">Computer Vision</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Sanath-07" class="project-link" target="_blank">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
+            <!-- Project 3: Student Wellbeing System -->
+            <div class="project-detailed fade-in">
+                <div class="project-banner" style="background: linear-gradient(135deg, #ed64a6, #9f7aea);">
+                    <i class="fas fa-graduation-cap project-banner-icon"></i>
                 </div>
+                <div class="project-body">
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-university"></i>
+                            <span>USC CSCI 566 Project</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>2-Person Team</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Fall 2024 - Ongoing</span>
+                        </div>
+                    </div>
 
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <i class="fas fa-network-wired"></i>
+                    <h3 class="project-title-main">AI-Driven Student Wellbeing Optimization System</h3>
+                    <p class="project-subtitle">Predictive Mental Health Framework Using Deep Learning and Knowledge Graphs</p>
+
+                    <p class="project-description-full">
+                        Developed a comprehensive machine learning framework for predicting student stress and wellbeing from multidimensional behavioral survey data. The system combines Multi-Layer Perceptrons for stress prediction, Random Forest ensembles for satisfaction forecasting, and integrates Large Language Models via Ollama for personalized intervention generation. Addresses critical gaps in international CS student support by providing proactive, culturally-aware recommendations at scale.
+                    </p>
+
+                    <div class="project-highlights">
+                        <h4><i class="fas fa-star"></i> System Capabilities</h4>
+                        <div class="highlights-grid">
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>Multimodal Prediction</h5>
+                                    <p>MLP architecture (100-50 neurons) achieving R²=0.78 on stress prediction with 50+ behavioral features across 10 life domains</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>Knowledge Graph Integration</h5>
+                                    <p>Planned 500+ node student-strategy graph with TransE embeddings for personalized recommendation traversal (target NDCG@10 > 0.7)</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>LLM-Powered Interventions</h5>
+                                    <p>Integrated Ollama API (llama3.2:3b) for template-free, contextually relevant recommendation generation with 100% factual accuracy</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h5>Student Archetype Discovery</h5>
+                                    <p>K-means clustering identified 4 distinct student profiles (High Achievers, Balanced, Social-Focused, At-Risk) for targeted support</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Kafka Clone - Distributed Messaging</h3>
-                        <p class="project-description">
-                            Built complete distributed messaging system from scratch using socket programming with Brokers, Consumers, Producers, and ZooKeeper for coordination. Deep dive into distributed systems architecture.
+
+                    <div class="metrics-showcase">
+                        <div class="metric-box">
+                            <span class="metric-value">R²=0.78</span>
+                            <span class="metric-label">Stress Prediction Accuracy</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-value">50+</span>
+                            <span class="metric-label">Behavioral Features</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-value">1,050</span>
+                            <span class="metric-label">Training Samples</span>
+                        </div>
+                        <div class="metric-box">
+                            <span class="metric-value">10</span>
+                            <span class="metric-label">Life Domains</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-stack-detailed">
+                        <h4><i class="fas fa-code"></i> Technology Stack</h4>
+                        <div class="tech-tags-detailed">
+                            <span class="tech-tag-detailed">Multi-Layer Perceptron</span>
+                            <span class="tech-tag-detailed">Random Forest</span>
+                            <span class="tech-tag-detailed">K-means Clustering</span>
+                            <span class="tech-tag-detailed">Knowledge Graphs</span>
+                            <span class="tech-tag-detailed">TransE Embeddings</span>
+                            <span class="tech-tag-detailed">LLM (Ollama API)</span>
+                            <span class="tech-tag-detailed">Sentence Transformers</span>
+                            <span class="tech-tag-detailed">PyTorch</span>
+                            <span class="tech-tag-detailed">scikit-learn</span>
+                            <span class="tech-tag-detailed">Python</span>
+                        </div>
+                    </div>
+
+                    <div class="project-impact">
+                        <h4><i class="fas fa-rocket"></i> Educational Technology Impact</h4>
+                        <p>
+                            Addresses critical mental health crisis in international CS student populations (2.3× higher dropout rates vs domestic students). Feature importance analysis revealed procrastination (ρ=0.71), sleep quality (ρ=-0.68), and financial stress (ρ=0.65) as dominant predictors, aligning with psychological research. The system identified "At-Risk" students (15% of population) with stress 3.5 points above mean, enabling early intervention. Target deployment metrics: R²>0.85 for prediction, RMSE<1.5 on 10-point scale, and performance parity within 0.1 R² across demographic groups for equitable support.
                         </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Distributed Systems</span>
-                            <span class="tech-tag">Socket Programming</span>
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">ZooKeeper</span>
-                            <span class="tech-tag">Microservices</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Projects-RR-2022/BD1_110_346_370_372" class="project-link" target="_blank">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
                     </div>
+
+                    
                 </div>
+            </div>
 
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">PX Cloud Java SDK</h3>
-                        <p class="project-description">
-                            Created open-source Java SDK for Cisco PX Cloud API, enabling developers to integrate with Cisco's cloud architecture seamlessly. Available on Cisco DevNet.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">SDK Development</span>
-                            <span class="tech-tag">REST APIs</span>
-                            <span class="tech-tag">Open Source</span>
+            <!-- Additional Projects Grid -->
+            <div class="simple-projects">
+                <h3 class="fade-in">Additional Projects</h3>
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <i class="fas fa-road"></i>
                         </div>
-                        <div class="project-links">
-                            <a href="https://developer.cisco.com/codeexchange/github/repo/CiscoDevNet/px-cloud-java-sdk/" class="project-link" target="_blank">
-                                <i class="fab fa-github"></i> Cisco DevNet
-                            </a>
+                        <div class="project-content">
+                            <h3 class="project-title">Vision Transformer Street Segmentation</h3>
+                            <p class="project-description">
+                                Implemented ViT architecture for pixel-level semantic segmentation and classification achieving 96% accuracy on Cityscapes dataset. Advanced autonomous driving perception capabilities.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Vision Transformers</span>
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">Semantic Segmentation</span>
+                                <span class="tech-tag">Computer Vision</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Sanath-07" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">StatHive - Cricket Analytics</h3>
-                        <p class="project-description">
-                            Created comprehensive cricket analytics dataset through multi-step data pipeline combining web scraping and BERT-based keyword extraction. Published in GradivaReview.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Web Scraping</span>
-                            <span class="tech-tag">BERT</span>
-                            <span class="tech-tag">Data Pipeline</span>
-                            <span class="tech-tag">Analytics</span>
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <i class="fas fa-network-wired"></i>
                         </div>
-                        <div class="project-links">
-                            <a href="https://gradivareview.com/volume-9-issue-7-2023/" class="project-link" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Publication
-                            </a>
+                        <div class="project-content">
+                            <h3 class="project-title">Kafka Clone - Distributed Messaging</h3>
+                            <p class="project-description">
+                                Built complete distributed messaging system from scratch using socket programming with Brokers, Consumers, Producers, and ZooKeeper for coordination. Deep dive into distributed systems architecture.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Distributed Systems</span>
+                                <span class="tech-tag">Socket Programming</span>
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">ZooKeeper</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Projects-RR-2022/BD1_110_346_370_372" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">PX Cloud Java SDK</h3>
+                            <p class="project-description">
+                                Created open-source Java SDK for Cisco PX Cloud API, enabling developers to integrate with Cisco's cloud architecture seamlessly. Available on Cisco DevNet.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">SDK Development</span>
+                                <span class="tech-tag">REST APIs</span>
+                                <span class="tech-tag">Open Source</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://developer.cisco.com/codeexchange/github/repo/CiscoDevNet/px-cloud-java-sdk/" class="project-link" target="_blank">
+                                    <i class="fab fa-github"></i> Cisco DevNet
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
